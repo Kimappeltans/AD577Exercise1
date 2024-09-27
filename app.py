@@ -53,7 +53,7 @@ user_input = st.text_area("Input text", height=150)
 
 # Select the target language for translation
 target_language = st.selectbox("Choose target language", [
-    "French", "Spanish", "German", "Russian", "Japanese"  # Added Japanese here
+    "French", "Spanish", "German", "Russian", "Japanese", "Italian"  # Added Japanese here
 ])
 
 # Load the appropriate model for translation
@@ -70,6 +70,8 @@ def load_translation_model(language):
             return pipeline("translation_en_to_ru", model="Helsinki-NLP/opus-mt-en-ru")
         elif language == "Japanese":
             return pipeline("translation_en_to_ja", model="Helsinki-NLP/opus-mt-en-ja")
+         elif language == "Italian":
+            return pipeline("translation_en_to_it", model="Helsinki-NLP/opus-mt-en-it")
         else:
             st.error("Unsupported language selected.")
             return None
